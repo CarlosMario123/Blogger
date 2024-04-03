@@ -1,0 +1,20 @@
+uso de la libreria flask_jwt_extended 
+
+create_access_token(identity, expires_delta=None, user_claims=None)
+-->
+Este método se utiliza para crear un token de acceso JWT. Toma tres parámetros:
+
+-identity: El identificador del usuario para el cual se está creando el token.
+ Esto podría ser un nombre de usuario, ID de usuario, correo electrónico, etc.
+
+-expires_delta (opcional): Un objeto timedelta que especifica cuánto tiempo será válido el token. 
+Si no se proporciona, se utilizará la configuración predeterminada de tiempo de expiración.
+
+-user_claims(opcional): Un diccionario de reclamaciones adicionales que se incluirán en el token JWT.
+
+**************************************************************************************************************************************************************
+set_access_cookies(response, access_token): 
+Este método se utiliza para establecer una cookie de acceso en una respuesta HTTP. Toma dos parámetros:
+
+response: La respuesta HTTP a la cual se agregará la cookie.
+access_token: El token de acceso JWT que se almacenará en la cookie.

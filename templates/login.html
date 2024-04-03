@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio de Sesión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-purple-200 flex items-center justify-center h-screen"
+  >
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <p>{{ messages }}</p>
+    {% endif %} {% endwith %}
+
+    <form
+      id="login-form"
+      class="bg-white flex flex-col px-4 py-3 w-72 h-96 rounded-l-md items-center"
+    >
+      <h2 class="text-xl font-bold w-full text-center mb-10">Blogger</h2>
+      <label for="correo" class="text-left w-full px-3">Email:</label>
+      <input type="email" id="correo" name="correo" required 
+      class="border-b-2 border-pink-300 w-11/12  transition duration-500 text-black focus:outline-transparent focus:translate-y-4 mb-10" 
+/>
+
+      <label for="password" class="text-left w-full px-3">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        class="border-b-2 border-pink-300 w-11/12  transition duration-500 text-black focus:outline-transparent focus:translate-y-4" 
+
+      />
+
+      <input
+        type="submit"
+        value="Iniciar sesión"
+        class="mt-16 bg-pink-900 text-white w-36 py-1 rounded-sm cursor-pointer hover:bg-pink-700 "
+    
+      />
+      <a href="{{url_for('auth.register')}}" class="mt-3 text-pink-950">Crear cuenta</a>
+    </form>
+    <img src="https://images.pexels.com/photos/768472/pexels-photo-768472.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="h-96 w-[18rem] rounded-r-md" alt="banner">
+
+    <script>
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const correo = document.getElementById("correo").value;
+          const password = document.getElementById("password").value;
+
+          fetch("{{ url_for('auth.inicio') }}", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ correo: correo, password: password }),
+          })
+            .then((response) => {
+              if (response.ok) {
+                return response.json();
+              }
+              throw new Error("Inicio de sesión fallido");
+            })
+            .then((data) => {
+              console.log(data);
+              if (data.token) {
+                localStorage.setItem("token", data.token);
+                alert("Inicio de sesión exitoso");
+                window.location.href = "/";
+              } else {
+                throw new Error("Token JWT no encontrado en la respuesta");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error.message);
+              alert("Inicio de sesión fallido");
+            });
+        });
+    </script>
+  </body>
+</html>

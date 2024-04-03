@@ -1,0 +1,48 @@
+Crea una plataforma de blogging donde los usuarios puedan registrarse, crear y publicar artículos,
+ gestionar categorías y etiquetas, y recibir comentarios de otros usuarios. Puedes incluir características 
+avanzadas como editor de contenido enriquecido, 
+programación de publicaciones, seguimiento de visitas y análisis de rendimiento de artículos.
+
+datos
+
+usuario:
+correo,contraseña,id,seguidores,siguiendo
+
+publicaciones:
+creador,comentarios,reacciones,contenido
+
+Comentario:
+contenido,creador
+
+reaccion:
+tipo,creador
+
+
+idea para la base de datos
+
+usuario:
+id,correo,contraseña
+
+seguidor --> sera como un pivote entre usuarios
+id_seguidor
+usuario_id: ID del usuario que sigue a otro usuario
+seguidor_id: ID del usuario seguido
+
+publicaciones:
+id_publicacion
+id_usuario --> foranea de seguidor
+contenido
+
+Comentario:
+id_comentario
+id_publicacion -->llave foranea de publicacion
+id_usuario  --> llave forane de usuario
+fecha
+contenido
+
+reaccion
+id_reacion 
+id_publicacion -->llave forane a publicacion
+id_reaccionador-->llave forane de usuario
+tipoReacion
+
