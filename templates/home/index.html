@@ -4,8 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogger</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Bienvenido</h1>
+<body class="flex flex-col bg-[#f89d52] items-center">
+    <nav class="w-full flex px-4 py-2 flex items-center bg-[#854400] justify-between">
+     <h1 class="text-2xl font-black text-white">Blogger</h1>
+      
+     <div class="text-white flex gap-x-5">
+        <a href="">Inicio</a>
+        <a href="">Siguiendo</a>
+        <a href="">Estadisticas</a>
+        <a href="">Cerrar session</a>
+     </div>
+    </nav>
+
+    <section class="w-10/12 bg-[#99550e] mt-2 flex flex-col items-center p-3">
+        <input type="text" name="" placeholder="Compartir anécdota" class="w-11/12 bg-[#ffce81] rounded-md  p-1 text-sm text-black placeholder-black">
+         <button class="mt-4 bg-orange-500 text-white w-32 rounded-sm">Compartir</button>
+    </section>
 </body>
 </html>

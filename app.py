@@ -4,7 +4,7 @@ from routes.allRoutes import instanceRoute
 
 
 app = Flask(__name__)
-app.secret_key = "clave1234"
+app.secret_key = "clave123"
 #Configuracion de cookies junto con jwt
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
 app.config['JWT_ACCESS_COOKIE_PATH'] = '/'

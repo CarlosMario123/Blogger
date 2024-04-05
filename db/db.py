@@ -33,7 +33,20 @@ class Database:
             password  VARCHAR(50) NOT NULL
         )
         """
+        
+        follow = """
+        CREATE TABLE IF NOT EXISTS follow (
+    seguidor INT,
+    siguiendo INT,
+    UNIQUE (seguidor, siguiendo),
+    FOREIGN KEY (seguidor) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (siguiendo) REFERENCES usuario(id_usuario)
+         )
+       """
+
         cursor.execute(usuario)
+        cursor.execute(follow)
+    
 
         connection.commit()
         cursor.close()

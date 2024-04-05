@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for, flash,Blueprint,jsonify
 from flask_jwt_extended import create_access_token,set_access_cookies
-
 from controlador.authController import AuthContoller
+
 authRoute = Blueprint("auth", __name__,url_prefix='/auth')
 authController = AuthContoller()
 
@@ -20,13 +20,12 @@ def inicio():
         if isLogin:
             flash(msg)
             usuario = username
-            access_token = create_access_token(identity=usuario)
-            response = jsonify({"mensaje": "Inicio de sesión exitoso", "token": access_token})
+            access_token1 = create_access_token(identity=usuario)
+            response = jsonify({"mensaje": "Inicio de sesión exitoso", "token": access_token1})
             response.status_code = 200
             response.headers.add('Access-Control-Allow-Origin', '*')
             #Este metodo establece una cookie en la respuesta HTTP que se enviará al cliente.
-            response.set_cookie('token', access_token, httponly=True, secure=True)
-            set_access_cookies(response, access_token)
+            set_access_cookies(response, access_token1)
             return response
 
         flash(msg)
@@ -50,6 +49,7 @@ def register():
     
     return render_template('register.html')
         
-        
+
+       
 
 

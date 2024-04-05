@@ -1,10 +1,13 @@
-from flask import render_template, request, redirect, url_for, flash,Blueprint
-from flask_jwt_extended import  jwt_required
+from flask import render_template, request, redirect, url_for, flash, Blueprint
+
+from auth.authDecorator import token_required
 
 
 homeRoute = Blueprint("home", __name__)
 
-@homeRoute.route("/",methods = ["GET","POST"])
-@jwt_required()
+@homeRoute.route("/", methods=["GET", "POST"])
+@token_required
 def index():
-    return "ff"
+   return render_template("home/index.html")
+    
+
