@@ -11,16 +11,18 @@
      <h1 class="text-2xl font-black text-white">Blogger</h1>
       
      <div class="text-white flex gap-x-5">
-        <a href="">Inicio</a>
-        <a href="">Siguiendo</a>
+        <a href="{{url_for('home.index')}}">Inicio</a>
+        <a href="{{url_for('follow.followers')}}">Siguiendo</a>
         <a href="">Estadisticas</a>
         <a href="">Cerrar session</a>
      </div>
     </nav>
 
     <section class="w-10/12 bg-[#99550e] mt-2 flex flex-col items-center p-3">
-        <input type="text" name="" placeholder="Compartir anécdota" class="w-11/12 bg-[#ffce81] rounded-md  p-1 text-sm text-black placeholder-black">
-         <button class="mt-4 bg-orange-500 text-white w-32 rounded-sm">Compartir</button>
+        <input type="text" name="" placeholder="Compartir anécdota" class="w-11/12 bg-[#ffce81] rounded-md  p-1 text-sm text-black placeholder-black" id="contenido">
+         <button class="mt-4 bg-orange-500 text-white w-32 rounded-sm" id="createPost">Compartir</button>
     </section>
+
+    <script src="{{ url_for('static', filename='js/posts/app.js') }}"></script>
 </body>
 </html>

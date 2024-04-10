@@ -43,9 +43,19 @@ class Database:
     FOREIGN KEY (siguiendo) REFERENCES usuario(id_usuario)
          )
        """
+        publicacion = """
+    CREATE TABLE IF NOT EXISTS publicacion (
+    id_publicacion INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT,
+    contenido TEXT,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+                  )
+                """   
 
         cursor.execute(usuario)
         cursor.execute(follow)
+        cursor.execute(publicacion)
     
 
         connection.commit()

@@ -32,6 +32,7 @@ publicaciones:
 id_publicacion
 id_usuario --> foranea de seguidor
 contenido
+fecha
 
 Comentario:
 id_comentario

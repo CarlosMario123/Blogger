@@ -1,5 +1,5 @@
 from functools import wraps
-from flask import redirect,url_for
+from flask import redirect, url_for
 from flask_jwt_extended import verify_jwt_in_request
 
 def token_required(fn):
@@ -9,10 +9,14 @@ def token_required(fn):
             # Verificar si el token JWT está presente y es válido
             verify_jwt_in_request()
         except Exception as e:
-            # Si el token no es válido, devolver un mensaje de error 401 Unauthorized
+            # Si se produce una excepción relacionada con el token JWT, manejarla aquí
+            print("Error verificando token JWT:", e)  # Agrega un registro de depuración
             return redirect(url_for("auth.inicio"))
         
         # Si el token es válido, ejecutar la función original
         return fn(*args, **kwargs)
+    
+    return decorated_function
+
     
     return decorated_function

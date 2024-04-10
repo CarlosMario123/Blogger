@@ -1,5 +1,7 @@
 from flask import jsonify
 from db.db import Database
+from models.userModel import UserModel
+from models.followers import Followers
 class FollowController:
     def __init__(self):
         self.bd = Database()
@@ -14,3 +16,9 @@ class FollowController:
         except Exception as e:
             print(e)
             return False
+    def viewFollowers(self,email):
+        userModel = UserModel()
+        followers = Followers()
+        idUser = userModel.findUserByEmail(email)
+        return followers.verSiguiendo(idUser)
+        
