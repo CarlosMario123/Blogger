@@ -1,12 +1,7 @@
-//manipulamos el dom 
 const contenidoSend = document.getElementById("contenido")
 //para el boton que vamos enviar el contenido
 const createBtn = document.getElementById("createPost")
-
 createBtn.addEventListener("click",createPublish)
-
-
-
 function createPublish() {
     const contenido = contenidoSend.value;
     if (contenido.trim().length < 0) {
@@ -54,3 +49,8 @@ function getCookie(name) {
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
+
+
+
+
+

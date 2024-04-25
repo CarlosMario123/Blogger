@@ -1,4 +1,4 @@
-from flask import Blueprint,request,jsonify
+from flask import Blueprint,request,jsonify,render_template
 from flask_jwt_extended import get_jwt_identity
 from controlador.publishController import PublishController
 from auth.authDecorator import token_required
@@ -15,5 +15,7 @@ def create():
     if result:
         return jsonify({"Msg":"post created successfully"})
     return jsonify({"msg":"error creating post"})
+
+
     
     

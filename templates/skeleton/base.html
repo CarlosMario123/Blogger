@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{% block titulo %}{% endblock %}</title>
+</head>
+<body class="flex flex-col bg-[#f89d52] items-center">
+    <nav class="w-full flex px-4 py-2 flex items-center bg-[#854400] justify-between">
+        <h1 class="text-2xl font-black text-white">Blogger</h1>
+         
+        <div class="text-white flex gap-x-5">
+           <a href="{{url_for('home.index')}}">Inicio</a>
+           <a href="{{url_for('follow.followers')}}">Siguiendo</a>
+           <a href="">Estadisticas</a>
+           <a href="">Cerrar session</a>
+        </div>
+       </nav>
+
+       <main class="w-full flex flex-col justify-center items-center">
+        {% block content %}{% endblock %}
+       
+       </main>
+
+       {% block scripts %}
+       {% endblock %}
+
+</body>
+</html>

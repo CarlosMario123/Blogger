@@ -1,28 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siguiendo</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="flex flex-col bg-[#f89d52] items-center">
-    <nav class="w-full flex px-4 py-2 flex items-center bg-[#854400] justify-between">
-        <h1 class="text-2xl font-black text-white">Blogger</h1>
-         
-        <div class="text-white flex gap-x-5">
-           <a href="{{url_for('home.index')}}">Inicio</a>
-           <a href="{{url_for('follow.followers')}}">Siguiendo</a>
-           <a href="">Estadisticas</a>
-           <a href="">Cerrar session</a>
-        </div>
-       </nav>
-       <h2 class="text-white font-bold text-3xl my-4">mis seguidores</h2>
-    <section class="w-full px-4 flex flex-wrap">
+{% extends "skeleton/base.html" %}
+{% block titulo %}Amigos{% endblock %}
+{% block content %}
+<h2 class="text-white font-bold text-3xl my-4">Mis seguidores</h2>
+<section class="w-full px-4 flex flex-wrap">
+    {% if followers %}
         {% for follower in followers %}
             <p class="bg-orange-100 w-1/4 text-center rounded-md py-1">{{ follower[1] }}</p>
         {% endfor %}
-    </section>
-    
-</body>
-</html>
+    {% else %}
+        <p class="text-white font-bold text-2xl w-full text-center h-72 mt-20">¡No tienes amigos!</p>
+    {% endif %}
+</section>
+{% endblock %}

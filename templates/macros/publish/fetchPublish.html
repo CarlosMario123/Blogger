@@ -1,0 +1,17 @@
+{% from "macros/publish/publicacion.html" import publicacion %} <!--lo importamos para su uso -->
+
+
+{% macro fetchPublish() %}
+    <script>
+        function renderPublish(usuario, contenido) {
+            const publicaciones = document.getElementById("publicaciones");
+            const nuevaPublicacionHTML = `{{ publicacion('${usuario}', '${contenido}') }}`;
+            publicaciones.insertAdjacentHTML('beforeend', nuevaPublicacionHTML);
+        }
+    
+        renderPublish("usuario112","una nueva publicacion")
+    </script>
+    
+    {% endmacro %} 
+
+
